@@ -10,9 +10,12 @@
 </head>
 <style>
     .backgroud {
-        background-color: black;
         color: white;
-       margin-left: 10px
+       margin-left: 10px;
+       background-color: #ece8e8;
+        color: #9f8585;
+        border-radius: 20px;
+        border: none;
     }
     .margin {
         margin-left: 10px
@@ -48,7 +51,7 @@
         font-family: FontAwesome;
     }
 </style>
-<body style="background-color: #000000">
+<body style="background-color: #9f8383">
 <div style="width: 885px; height: 550px ; float: right;" id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -70,11 +73,15 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+    <div style="float: none">
+        <img src="img_9.png" height="50" width="133"/>
+        <img src="img_8.png" height="50" width="133"/>
+    </div>
 
 <!--Đăng nhập-->
-<label class="margin" style="color: white; margin-top: 30px" >Tài khoản</label>
+<label class="margin" style=" color: #ece8e8; margin-top: 30px;;" >Tài khoản</label>
 <input id="tk" type="text" placeholder="Vui lòng đăng nhập"><br><br>
-<label class="margin"  style="color: white">Mật khẩu</label>
+<label class="margin"  style=" color: #ece8e8">Mật khẩu</label>
 <input id="mk" type="password"><br>
 <div>
 <div style="margin-left: 150px;margin-top: 12px" class="backgroud" id="theID"></div>
@@ -106,8 +113,8 @@
 </div><br>
 <!--thông tin-->
 <button class="backgroud" >Giới thiệu</button><br><br>
-<span class="backgroud" style="font-style: italic ; text-align: center; display: block">Công ty trách nghiệm hữu hạn 1 thành viên, một mình chạy hết code =)))</span>
-<h5  class="backgroud" style="font-style: italic ; margin-left: 65px;color: pink">Ký tên : Oanh cute</h5>
+<span style="font-style: italic ; text-align: center; display: block; color: white">Công ty trách nghiệm hữu hạn 1 thành viên, một mình chạy hết code =)))</span><br>
+<h5  style="font-style: italic ; margin-left: 65px;color: pink">Ký tên : Oanh cute</h5>
 <script>
     function sigUp(){
             var account = document.getElementById('tk').value
@@ -128,4 +135,5 @@
     }
 </script>
 </body>
+
 </html>

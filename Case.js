@@ -32,8 +32,7 @@ class ProductManager{
         document.getElementById("screen").innerHTML = str;
         this.addKeySearch();
         localStorage.setItem("products", this.products);
-        console.log("hgfd")
-        console.log(localStorage.getItem("products"))
+
     }
     add(){
         let name = document.getElementById("name").value;
@@ -51,16 +50,16 @@ class ProductManager{
     edit(idx){
         let arr = this.products;
         let str = "<table class='table table-striped table-hover' style='width: 80%; margin: auto; text-align: center'>";
-        str += "<tr><th>#</th><th>Name</th><th>Type</th><th>Cost</th><th>Describe</th><th>Edit</th><th>Delete</th></tr>";
+        str += "<tr><th>#</th><th>Name</th><th>Type</th><th>Cost</th><th>Describe</th><th>Img</th><th>Edit</th><th>Delete</th></tr>";
         for (let i = 0; i < arr.length; i++) {
             if(i === idx){
                 str += "<tr>";
                 str += "<td>" + (i + 1) + "</td>";
                 str += "<td style='width: 1000px; height: 40px; text-align: left'><input id='editName' value='"+arr[i].name+"' type='text'></td>";
-                str += "<td style='width: 300px; height: 40px'><input id='editType' value='"+ arr[i].type +"' type='text'></td>";
-                str += "<td style='width: 300px; height: 40px'><input id='editCost' value='"+ arr[i].cost +"' type='text'></td>";
-                str += "<td style='width: 300px; height: 40px'><input id='editDescribe' value='"+ arr[i].describe +"' type='text'></td>";
-                str += "<td style='width: 300px; height: 40px'><input id='img' value='"+ arr[i].img +"' type='text'></td>";
+                str += "<td style='width: 200px; height: 40px'><input id='editType' value='"+ arr[i].type +"' type='text'></td>";
+                str += "<td style='width: 200px; height: 40px'><input id='editCost' value='"+ arr[i].cost +"' type='text'></td>";
+                str += "<td style='width: 200px; height: 40px'><input id='editDescribe' value='"+ arr[i].describe +"' type='text'></td>";
+                str += "<td style='width: 200px; height: 40px'><input id='img' value='"+ arr[i].img +"' type='text'></td>";
                 str += "<td><button class=\"btn btn-success\" onclick='pm.editButton(" + i + ")'>Edit</button></td>";
                 str += "<td onclick='pm.delete(" + i + ")'><i class='bi bi-trash3'></i></td>";
                 str += "</tr>";
@@ -68,10 +67,10 @@ class ProductManager{
                 str += "<tr>";
                 str += "<td>" + (i + 1) + "</td>";
                 str += "<td style='width: 1000px; height: 40px; text-align: left'>" + arr[i].name + "</td>";
-                str += "<td style='width: 300px; height: 40px'>" + arr[i].type + "</td>";
-                str += "<td style='width: 300px; height: 40px'>" + arr[i].cost + "</td>";
-                str += "<td style='width: 300px; height: 40px'>" + arr[i].describe + "</td>";
-                str += "<td style='width: 300px; height: 40px'>"+ arr[i].img +"</td>";
+                str += "<td style='width: 200px; height: 40px'>" + arr[i].type + "</td>";
+                str += "<td style='width: 200px; height: 40px'>" + arr[i].cost + "</td>";
+                str += "<td style='width: 200px; height: 40px'>" + arr[i].describe + "</td>";
+                str += "<td style='width: 200px; height: 40px'>"+ arr[i].img +"</td>";
                 str += "<td><i class=\"bi bi-pen\"></i></td>";
                 str += "<td onclick='pm.delete(" + i + ")'><i class='bi bi-trash3'></i></td>";
                 str += "</tr>";
@@ -89,6 +88,7 @@ class ProductManager{
             alert("Deleted!!!");
             this.show(this.products);
         }
+        localStorage.setItem("products", this.products);
     }
     editButton(idx){
         let EditName = document.getElementById('editName').value
@@ -107,6 +107,7 @@ class ProductManager{
             str += "<option value='"+ arr[i].name +"'>";
         }
         document.getElementById("datalistOptions").innerHTML = str;
+        localStorage.setItem("products", this.products);
     }
 
     searchByName(){
@@ -122,6 +123,7 @@ class ProductManager{
         }else {
             alert("No data found!!!");
         }
+        localStorage.setItem("products", this.products);
     }
     ShowAdd(){
         document.getElementById("fnAdd").hidden = false;
@@ -142,5 +144,6 @@ pm.products.push(new Product("Bacon, Gouda & Egg Sandwich   ", "cake", "50000", 
 pm.products.push(new Product("Double-Smoked Bacon, Cheddar  ", "cake", "50000", "no describe"," https://globalassets.starbucks.com/assets/a37c3ec673fa42f98f3b123a7d7ebbfe.jpg?impolicy=1by1_tight_288"));
 pm.products.push(new Product("Turkey Bacon, Cheddar & Egg   ", "cake", "50000", "no describe","https://globalassets.starbucks.com/assets/b7e25a03655741869ced8dfde8c70659.jpg?impolicy=1by1_tight_288"));
 pm.products.push(new Product("Egg White Roasted Red Pepper  ", "cake", "50000", "no describe","   https://globalassets.starbucks.com/assets/9e2c9538d66e4c43844b154b14b2f501.jpg?impolicy=1by1_tight_288"));
+localStorage.setItem("products", this.pm);
 pm.show(pm.products);
 
