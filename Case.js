@@ -145,5 +145,8 @@ pm.products.push(new Product("Double-Smoked Bacon, Cheddar  ", "cake", "50000", 
 pm.products.push(new Product("Turkey Bacon, Cheddar & Egg   ", "cake", "50000", "no describe","https://globalassets.starbucks.com/assets/b7e25a03655741869ced8dfde8c70659.jpg?impolicy=1by1_tight_288"));
 pm.products.push(new Product("Egg White Roasted Red Pepper  ", "cake", "50000", "no describe","   https://globalassets.starbucks.com/assets/9e2c9538d66e4c43844b154b14b2f501.jpg?impolicy=1by1_tight_288"));
 localStorage.setItem("products", this.pm);
-pm.show(pm.products);
+function hoho() {
+    pm.show(pm.products);
+}
+
 

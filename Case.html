@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 </head>
-<body>
+<body onload="hoho()">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div  class="container-fluid">
         <a class="navbar-brand" href="#">Menu</a>
@@ -33,6 +33,7 @@
       <option class="coler" value="cale">Cake</option>
     </select></td></tr>
     <tr><td class="coler">Cost</td><td><input id="cost" type="text"> </td></tr>
+      <tr><td class="coler">Img</td><td><input id="img" type="text"> </td></tr>
     <tr><td class="coler">Describe</td><td><textarea id="describe"></textarea></td></tr>
    <tr><td colspan="2"><button class="btn btn-success" onclick="pm.add()">Save</button></td></tr>
   </table>
@@ -50,5 +51,5 @@
         location.href="case_trangchu.html"
     }
 </script>
+    <script src="Case.js"></script>
 </html>
-<script src="Case.js"></script>
