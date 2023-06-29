@@ -33,6 +33,9 @@
         background-color: black;
         color: white;
     }
+    .gioHang1{
+    padding-left: -10%;
+}
 </style>
 <body class="" style="background-color: #9f8383; align-items: center">
 <div class="oanhcute">
@@ -44,6 +47,8 @@
                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
             </svg>
         </button>
+
+<!--        đăng nhập-->
         <div id="fnAdd" style="display: none" >
             <label class="margin" style=" color: #ece8e8; margin-top: 30px;" >Tài khoản</label>
             <input id="tk" type="text" placeholder="Vui lòng đăng nhập"><br><br>
@@ -55,40 +60,48 @@
                 <path d="m5.354 7.146.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708z"/>
             </svg>
             </button>
+            <p class="margin" style=" color: #ece8e8; margin-top: 30px; margin-left: 20px; margin-top: 5px" id="theID"></p>
         </div>
         </div>
     </div>
 
+
     <div class="timKiem">
+        <!--Thanh toán-->
+        <div id="giohang"></div><div class="gioHang1" onclick="thanhToan()" style="background-color:  #9f8383 ;color:  white; width: 50px; border-radius: 20px; border: none"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bag-check" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+    </svg></div>
+
     <div>
-<!--  tim kiem-->
+        <!--  tim kiem-->
 <center class="navbar-collapse" id="navbarSupportedContent">
-    <input  style="width: 300px" class="form-control me-2" list="datalistOptions" id="srchId" placeholder="Type here ~">
+    <input  style="width: 300px" class="form-control me-2" list="datalistOptions" id="srchId" placeholder="Type here ">
     <datalist id="datalistOptions">
     </datalist>
 </center>
     </div>
+
     <div>
-<!--        check-->
+<!--check-->
     <button style=" color:  #9f8383; width: 50px; border-radius: 20px; border: none" onclick="check()"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
         <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
         <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
     </svg></button>
-<!--    <button style="margin-left: 8px" class="btn btn-outline-success" onclick="pm.show(pm.products)">List</button>-->
-<!--    <button style="margin-left: 8px" class="btn btn-outline-success" onclick="pm.ShowAdd()">Add</button>-->
     </div>
     </div>
-
     <div class="nhanvat">
         <!--nút home-->
         <svg onclick="doiTrang()" style="color: white" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
             <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
             <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
         </svg><br>
-
     </div>
 </div>
 <br><br>
+<!--hiển thị-->
+<div style="text-align: center;background-color: #ece8e8; color: #9f8585; border-radius: 30px" id="hienThi"></div>
+
 <!--thông tin-->
 <div id="screenOrder" style="text-align: center; margin-bottom: 100px"></div>
 <div style="width: 100%; clear: both; padding: 50px; color: #222222; font-style: italic">
@@ -102,16 +115,22 @@
     <p> Tìm hiểu thêm các công ty và thương hiệu khác tại đây: <a style="color: whitesmoke" href=" https://brademar.com/network/ ">Network | Brade Mar</a></p>
 </div>
     <script>
+        // document.onload = function () {
+        //     if(arrGioHang.length > 0){
+        //         document.getElementById("giohang").innerHTML = arrGioHang.length;
+        //     }
+        // }
+        var arrGioHang = [];
 function getAllProduct() {
     let str = "";
     for (let i = 0; i < pm.products.length; i++) {
         str += `<div style="float:left; width: 50%"><center><img class="card" style=" width: 150px;height: 150px; margin-top: 35px" src="${pm.products[i].img}" alt="ảnh"></center>
                     <h5 class="card-title" style="color: white;font-style: italic; margin-bottom: 5px; margin-top: 15px">${pm.products[i].name}</h5>
-                    <p class="card-text" style="color: white; font-style: italic">${pm.products[i].cost}</p>
+                    <p class="card-text" style="color: white; font-style: italic">${pm.products[i].cost} $ </p>
                     <button style="background-color: white; color:  #9f8383; width: 50px; border-radius: 20px; border: none; margin-right: 13px" onclick="mua(${i})"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
   <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
 </svg></button>
-                  <button style="background-color: white; color:  #9f8383; width: 50px; border-radius: 20px; border: none" onclick="gioHang(${i})"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                  <button style="background-color: white; color:  #9f8383; width: 50px; border-radius: 20px; border: none" onclick="gioHang(${pm.products[i].cost})"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
   <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
 </svg></button></div>`
     }
@@ -122,20 +141,38 @@ function doiTrang(){
 }
 
 function mua(index) {
+    let orderNumber = pm.taoCodeNumber();
     var total = 0
     var mua = [];
     mua.unshift(pm.products[index])
     for (let i = 0; i < mua.length; i++){
         total += +mua[i].cost
     }
-    let check = confirm("bạn muốn mua hàng và thanh toán " + total + "VND?")
+    let check = confirm("Tổng bạn phải thanh toán " + total + "$!" +"\n" + "bạn có muốn thanh toán?")
     if (check){
-        alert("bạn mua hàng và thanh toán thành công")
+        document.getElementById('hienThi').innerHTML = "Mã đặt hàng của bạn là " + orderNumber + "!!"
     }
 }
-function gioHang(index){
-
+function gioHang(cost){
+    arrGioHang.push(cost);
+    document.getElementById('hienThi').innerHTML = "Bạn thêm vào giỏ thành công"
+    document.getElementById("giohang").innerHTML = arrGioHang.length;
 }
+function thanhToan(){
+    let total = 0;
+    if(arrGioHang.length == 0 || arrGioHang.length < 0){
+        document.getElementById('hienThi').innerHTML = "Sorry, có vẻ bạn chưa thêm vào giỏ hàng rồi :3"
+    } else {
+    for (let i = 0; i < arrGioHang.length; i++) {
+        total += parseInt(arrGioHang[i]);
+    }
+    let orderNumber = pm.taoCodeNumber();
+    let check = confirm("Tổng bạn phải thanh toán " + total + "$!" +"\n" + "bạn có muốn thanh toán?")
+    if (check){
+        document.getElementById('hienThi').innerHTML = "Mã đặt hàng của bạn là " + orderNumber + "!!"
+    arrGioHang = [];
+    document.getElementById("giohang").innerHTML = "";
+}}  }
 function caNhan(){
     var account = document.getElementById('tk').value
     var password = document.getElementById('mk').value

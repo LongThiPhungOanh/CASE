@@ -1,4 +1,3 @@
-
 class Product{
     constructor(name, type, cost, describe, img) {
         this.name = name;
@@ -11,6 +10,12 @@ class Product{
 class ProductManager{
     constructor() {
         this.products = [];
+        this.codeNumber = 0
+    }
+
+    taoCodeNumber(){
+        this.codeNumber++;
+        return "Order_00" + this.codeNumber;
     }
     show(elements){
         let arr = elements;
@@ -130,15 +135,15 @@ class ProductManager{
     }
 }
 var pm = new ProductManager();
-pm.products.push(new Product("Chocolate Java Frappuccino Blended Beverage .", "water", "50000", "no describe", "https://globalassets.starbucks.com/assets/1fd99578d31f4072a52892398d8f1fa8.jpg?impolicy=1by1_tight_288"));
+pm.products.push(new Product("Chocolate Java Frappuccino Blended Beverage.", "water", "50000", "no describe", "https://globalassets.starbucks.com/assets/1fd99578d31f4072a52892398d8f1fa8.jpg?impolicy=1by1_tight_288"));
 pm.products.push(new Product("Mocha Java Mint Frappuccino Blended Beverage.", "water", "65000", "no describe", " https://globalassets.starbucks.com/assets/b8f963bfe65b4117af17d316e6bc3bc8.jpg?impolicy=1by1_tight_288"));
-pm.products.push(new Product("Caramel Ribbon Frappuccino Blended Beverage .", "water", "55000", "no describe", "https://globalassets.starbucks.com/assets/c297d3528849499f81322d561575d94b.jpg?impolicy=1by1_tight_288"));
-pm.products.push(new Product("Espr Java Mint Frappuccino Blended Beverage .", "water", "45000", "no describe", "https://globalassets.starbucks.com/assets/410cd92738514641bf497d4b6a18c30f.jpg?impolicy=1by1_tight_288"));
+pm.products.push(new Product("Caramel Ribbon Frappuccino Blended Beverage.", "water", "55000", "no describe", "https://globalassets.starbucks.com/assets/c297d3528849499f81322d561575d94b.jpg?impolicy=1by1_tight_288"));
+pm.products.push(new Product("Espr Java Mint Frappuccino Blended Beverage.", "water", "45000", "no describe", "https://globalassets.starbucks.com/assets/410cd92738514641bf497d4b6a18c30f.jpg?impolicy=1by1_tight_288"));
 pm.products.push(new Product("Mocha Java Mint Frappuccino Blended Beverage.", "water", "75000", "no describe","https://globalassets.starbucks.com/assets/72b70f11fe984732af4d8e539f53ca2d.jpg?impolicy=1by1_tight_288"));
-pm.products.push(new Product("Java Chip Mint Frappuccino Blended Beverage .", "water", "60000", "no describe"," https://globalassets.starbucks.com/assets/70198375bb0a442f8792437b5d1df972.jpg?impolicy=1by1_tight_288"));
+pm.products.push(new Product("Java Chip Mint Frappuccino Blended Beverage.", "water", "60000", "no describe"," https://globalassets.starbucks.com/assets/70198375bb0a442f8792437b5d1df972.jpg?impolicy=1by1_tight_288"));
 
 pm.products.push(new Product("Chicken, Maple Butter & Egg Sandwich Sausage.", "cake", "45000", "no describe"," https://globalassets.starbucks.com/assets/012cdfb74d294be28ca6604768408c4b.jpg?impolicy=1by1_tight_288"));
-pm.products.push(new Product("Bacon, Sausage & Egg Wrap & Sausage Butter  .", "cake", "50000", "no describe","https://globalassets.starbucks.com/assets/27bd607e92354742bc8cf46b23f4ce39.jpg?impolicy=1by1_tight_288"));
+pm.products.push(new Product("Bacon, Sausage & Egg Wrap & Sausage Butter .", "cake", "50000", "no describe","https://globalassets.starbucks.com/assets/27bd607e92354742bc8cf46b23f4ce39.jpg?impolicy=1by1_tight_288"));
 pm.products.push(new Product("Impossible™ Breakfast Sausage ", "cake", "45000", "no describe","https://globalassets.starbucks.com/assets/f9a4cd143c4342abbb4f60b7fab4e6df.jpg?impolicy=1by1_tight_288"));
 pm.products.push(new Product("Bacon, Gouda & Egg Sandwich   ", "cake", "50000", "no describe","https://globalassets.starbucks.com/assets/76909e4b00b5430faef132b2fa93e40b.jpg?impolicy=1by1_tight_288"));
 pm.products.push(new Product("Double-Smoked Bacon, Cheddar  ", "cake", "50000", "no describe"," https://globalassets.starbucks.com/assets/a37c3ec673fa42f98f3b123a7d7ebbfe.jpg?impolicy=1by1_tight_288"));
